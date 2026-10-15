@@ -1,0 +1,42 @@
+[tool.pytest.ini_options]
+# Run from the repository root: pytest
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--tb=short",
+]
+
+[tool.coverage.run]
+source = ["app"]
+branch = true
+omit = [
+    # Boto3-dependent code — requires live AWS or moto fixtures
+    "app/storage/state.py",      # DynamoDBStateStore class
+    "app/storage/s3.py",         # S3StorageAdapter class
+    "app/core/metrics.py",       # CloudWatchMetricsClient class
+    "app/core/secrets.py",       # SecretsManagerClient class
+    # Entry point — tested via integration only
+    "app/main.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 60
+exclude_lines = [
+    # Ignore abstract method stubs
+    "raise NotImplementedError",
+    # Ignore type-checking imports
+    "if TYPE_CHECKING:",
+    # Ignore pragma: no cover markers
+    "pragma: no cover",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[tool.coverage.xml]
+output = "coverage.xml"

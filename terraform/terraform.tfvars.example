@@ -1,0 +1,15 @@
+# terraform.tfvars.example
+# Copy to terraform.tfvars and fill in your values.
+# Do NOT commit terraform.tfvars to version control.
+
+aws_region         = "ap-south-1"
+environment        = "prod"
+project            = "catalogue-sync"
+container_image    = "123456789.dkr.ecr.ap-south-1.amazonaws.com/catalogue-sync:latest"
+product_api_url    = "https://pim.example.com"
+warehouse_api_url  = "https://wms.example.com"
+product_api_key    = "REPLACE_ME"
+warehouse_api_key  = "REPLACE_ME"
+sync_schedule      = "cron(0 6 * * ? *)"
+subnet_ids         = ["subnet-xxxxxxxxxxxxxxxxx"]
+security_group_ids = ["sg-xxxxxxxxxxxxxxxxx"]

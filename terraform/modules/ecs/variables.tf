@@ -1,0 +1,14 @@
+variable "project" { type = string }
+variable "environment" { type = string }
+variable "aws_region" { type = string }
+variable "container_image" { type = string }
+variable "task_execution_role" { type = string }
+variable "task_role" { type = string }
+variable "product_api_url" { type = string }
+variable "warehouse_api_url" { type = string }
+variable "product_api_key_arn" { type = string }
+variable "warehouse_api_key_arn" { type = string }
+variable "s3_bucket_name" { type = string }
+variable "runs_table_name" { type = string }
+variable "batches_table_name" { type = string }
+variable "dlq_table_name" { type = string }
